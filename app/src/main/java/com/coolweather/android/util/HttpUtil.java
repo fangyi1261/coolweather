@@ -3,6 +3,9 @@ package com.coolweather.android.util;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
+/**
+ *  发送网络通信请求
+ */
 public class HttpUtil {
 
     public static void sendOKHttpRequest(String address, okhttp3.Callback callback) {

@@ -10,6 +10,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ *  解析数据类
+ */
 public class Utility {
 
     /**
