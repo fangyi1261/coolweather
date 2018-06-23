@@ -12,41 +12,54 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"/>
 
-    <!-- ScrollView 只能存在一个直接子布局 -->
-    <ScrollView
-        android:id="@+id/weather_layout"
+    <!-- (3) -->
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:overScrollMode="never">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <!-- (2)添加下拉刷新天气功能 -->
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true">
+            android:layout_height="match_parent">
+            <!-- (1)ScrollView 只能存在一个直接子布局 -->
+            <ScrollView
+                android:id="@+id/weather_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:overScrollMode="never">
 
-            <Button
-                android:id="@+id/return_button"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="10dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/ic_back"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="true">
 
-            <include layout="@layout/title"/>
+                    <include layout="@layout/title"/>
 
-            <include layout="@layout/now"/>
+                    <include layout="@layout/now"/>
 
-            <include layout="@layout/forecast"/>
+                    <include layout="@layout/forecast"/>
 
-            <include layout="@layout/aqi"/>
+                    <include layout="@layout/aqi"/>
 
-            <include layout="@layout/suggestion"/>
+                    <include layout="@layout/suggestion"/>
 
-        </LinearLayout>
+                </LinearLayout>
 
-    </ScrollView>
+            </ScrollView>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+        <!-- (3) 添加城市碎片-->
+        <fragment
+            android:id="@+id/choose_area_fragment"
+            android:name="com.coolweather.android.ChooseAreaFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"/>
+
+    </android.support.v4.widget.DrawerLayout>
 
 </FrameLayout>
